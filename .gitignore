@@ -2,6 +2,8 @@
 bin/
 bin-debug/
 bin-release/
+html-template/
+.DS_Store
 
 # Other files and folders
 .settings/
