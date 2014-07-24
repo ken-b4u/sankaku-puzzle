@@ -8,17 +8,20 @@
 	import flash.net.URLRequest;
 	import flash.utils.Timer;
 	import flash.utils.setTimeout;
+	
 	import sankakupuzzle.scene.base.SceneBase;
 
 	public class LogoScene extends SceneBase
 	{
+		// デバッグ値
+		public static const TIMER_SEC = 0;
+		
 		public function LogoScene() 
 		{
 		}
 		
 		override public function startScene():void 
 		{
-			
 			super.startScene();
 			
 			var loader:Loader = new Loader();
@@ -29,7 +32,7 @@
 				loader.scaleX = 0.5;
 				loader.scaleY = 0.5;
 				uiLayer.addChild(loader);
-				var timer:Timer = new Timer(2000,1);
+				var timer:Timer = new Timer(TIMER_SEC,1);
 				// 指定した時間隔で、繰り返し実行されるイベント
 				timer.addEventListener(TimerEvent.TIMER,function (e:TimerEvent):void{
 					loader.addEventListener(Event.ENTER_FRAME, clearLogo);
@@ -42,33 +45,14 @@
 							// アルファが0以下になった円は動作を止めて消す。
 							loader.removeEventListener(Event.ENTER_FRAME, clearLogo);
 							uiLayer.removeChild(loader);
-							
-//							_nextScene = new TopScene();
-//							isEnableInit = true;
-//							setPlayerData(_nextScene);
+							_nextScene = new TitleScene();
+							dispatchCompleteEvent();
 						}
 					}
 				});
 				timer.start();
 				dispatchLoadEndEvent();
 			}
-			
-		}
-		
-		override protected function dispatchLoadEndEvent(sec:int=0):void
-		{
-			if(sec <= 0) {
-				dispatchEvent(new Event(SCENE_LOAD_COMPLETE));
-			} else {
-				setTimeout(function():void {
-					dispatchEvent(new Event(SCENE_LOAD_COMPLETE));
-				}, sec);
-			}
-		}
-		
-		override public function stopScene():void 
-		{
-			super.stopScene();
 		}
 	}
 
