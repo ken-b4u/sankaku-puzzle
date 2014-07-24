@@ -19,7 +19,7 @@
 		private function init():void
 		{
 			var soundList:Array = [
-				{ key:SoundManager.SE_KEY_CLICK, src:'/assets/se/button_click.mp3', type:SoundManager.TYPE_SE }
+				{ key:SoundManager.SE_KEY_CLICK, src:'/assets/se/click.mp3', type:SoundManager.TYPE_SE }
 			];
 			utilSoundMg.loadUtilSe(soundList);
 			_childScene = new LogoScene();

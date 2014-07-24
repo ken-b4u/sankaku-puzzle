@@ -10,6 +10,8 @@ package sankakupuzzle.scene.ui
 	import flash.net.SharedObject;
 	import flash.net.URLRequest;
 	
+	import sankakupuzzle.debug.Dump;
+	
 	// 【iOSのみ】マナーモード時に無音にする
 	SoundMixer.audioPlaybackMode = AudioPlaybackMode.AMBIENT;
 	
@@ -219,7 +221,8 @@ package sankakupuzzle.scene.ui
 		public function bgmPause():void {
 			if(isEnableBgm()) {
 				// 設定しているBGM情報がない場合はここで終了
-				if(bgmList[nowBgmKey] == null) return;
+				if(bgmList[nowBgmKey] == null || bgmList[nowBgmKey].soundCh == null) return;
+				
 				// 停止位置を保持
 				bgmList[nowBgmKey].position = bgmList[nowBgmKey].soundCh.position;
 				bgmList[nowBgmKey].soundCh.stop();
