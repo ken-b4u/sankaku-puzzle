@@ -33,12 +33,12 @@
 				{ key:'Title', src:'/assets/bgm/198-Ravel-Miroirs-Alborada-del-Gracioso.mp3', type:SoundManager.TYPE_BGM }
 			];
 			soundMg.loadSound(soundList);
-			addEventListener(MouseEvent.CLICK, onClickStage);
+			touchString.addEventListener(MouseEvent.CLICK, onClickStage);
+			
 			dispatchLoadEndEvent();
 		}
 		
 		private function onClickStage(e:MouseEvent):void {
-			trace('てすてす');
 			soundMg.sePlay(SoundManager.SE_KEY_CLICK);
 		}
 	}
